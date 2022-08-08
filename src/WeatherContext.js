@@ -6,8 +6,10 @@ export const WeatherContext = createContext();
 
 const WeatherContextProvider = ({ children }) => {
 
-    const [todayDate, setTodayDate] = useState();
+    const [todayDate, setTodayDate] = useState("");
     const [allDatesAvailable, setAllDatesAvailable] = useState();
+    const [nOfDestinations, setNOfDestinations] = useState(0);
+    const [allWeather, setAllWeather] = useState([]);
 
     useEffect(() => {
         const today = (new Date());
@@ -17,7 +19,7 @@ const WeatherContextProvider = ({ children }) => {
 
     useEffect(() => {
         let allDatesTemp = [];
-        for (let i = 0; i < 16; i++) {
+        for (let i = 0; i < 14; i++) {
             allDatesTemp[i] = (format(addDays(startOfToday(new Date()), i), "EEEE dd", {locale: frCA}))
         }
         setAllDatesAvailable(allDatesTemp);
@@ -27,7 +29,11 @@ const WeatherContextProvider = ({ children }) => {
         <WeatherContext.Provider
             value={{
                 todayDate,
-                allDatesAvailable
+                allDatesAvailable,
+                nOfDestinations,
+                setNOfDestinations,
+                allWeather,
+                setAllWeather
             }}
         >
             {children}
