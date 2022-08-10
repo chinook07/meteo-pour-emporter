@@ -4,12 +4,13 @@ import styled from "styled-components";
 import { WeatherContext } from "../WeatherContext";
 
 const Calendar = () => {
-    const { todayDate } = useContext(WeatherContext);
+    const { todayDate, allDatesAvailable } = useContext(WeatherContext);
 
     if (todayDate !== "") {
         return (
             <Wrapper>
-                <div>Date d'aujourd'hui : {todayDate}.</div>
+                <Date>Date d'aujourd'hui : <span>{todayDate}</span>.</Date>
+                <JusquA>Prévisions disponibles jusqu'au {allDatesAvailable[13]}.</JusquA>
             </Wrapper>
         )
     } else {
@@ -19,6 +20,17 @@ const Calendar = () => {
     }
 }
 
-const Wrapper = styled.div``
+const Wrapper = styled.div`
+    margin: 15px;
+`
+
+const Date = styled.div`
+    text-align: center;
+    span {
+        font-weight: bold;
+    }
+`
+
+const JusquA = styled.div``
 
 export default Calendar;

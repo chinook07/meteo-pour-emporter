@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { startOfToday, format, addDays, startOfDay } from "date-fns";
+import { startOfToday, format, addDays } from "date-fns";
 import { frCA } from "date-fns/locale";
 
 export const WeatherContext = createContext();
@@ -8,7 +8,6 @@ const WeatherContextProvider = ({ children }) => {
 
     const [todayDate, setTodayDate] = useState("");
     const [allDatesAvailable, setAllDatesAvailable] = useState();
-    const [nOfDestinations, setNOfDestinations] = useState(0);
     const [allWeather, setAllWeather] = useState([]);
 
     useEffect(() => {
@@ -30,8 +29,6 @@ const WeatherContextProvider = ({ children }) => {
             value={{
                 todayDate,
                 allDatesAvailable,
-                nOfDestinations,
-                setNOfDestinations,
                 allWeather,
                 setAllWeather
             }}
