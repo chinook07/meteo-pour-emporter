@@ -11,6 +11,7 @@ const WeatherContextProvider = ({ children }) => {
     const [allDatesAvailable, setAllDatesAvailable] = useState(JSON.parse(localStorage.getItem("allDatesAvailable")));
     const [allWeather, setAllWeather] = useState(JSON.parse(localStorage.getItem("entireForecast")));
     const [ready, setReady] = useState(false);
+    const [showAbout, setShowAbout] = useState(false);
 
     // Trouver la date d'aujourd'hui, l'heure, et les 14 jours à venir.
 
@@ -44,7 +45,9 @@ const WeatherContextProvider = ({ children }) => {
                 allDatesAvailable,
                 allWeather,
                 setAllWeather,
-                ready
+                ready,
+                showAbout,
+                setShowAbout
             }}
         >
             {children}
