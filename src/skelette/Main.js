@@ -1,16 +1,14 @@
-import { useContext } from "react";
 import styled from "styled-components";
 
-import { WeatherContext } from "../WeatherContext";
 import Calendar from "../main/Calendar";
-import Form from "../main/Form";
+import Entry from "../main/Entry";
 import Summary from "../main/Summary";
 
 const Main = () => {
     return (
         <Wrapper>
             <Calendar />
-            <Form />
+            <Entry />
             <Summary />
         </Wrapper>
     )
