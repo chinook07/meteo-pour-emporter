@@ -99,7 +99,7 @@ const Entry = () => {
             }
             {
                 cityChosen !== "" && showCal &&
-                <div>Quand serez-vous à {cityChosen.name}?</div>
+                <QuandSerez>Quand serez-vous à <span>{cityChosen.name}</span>?</QuandSerez>
             }
             {
                 showCal &&
@@ -113,6 +113,13 @@ const Entry = () => {
 
 const Wrapper = styled.div`
     margin: 15px;
+`
+
+const QuandSerez = styled.div`
+    margin-top: 10px;
+    span {
+        font-weight: bold;
+    }
 `
 
 export default Entry;

@@ -9,8 +9,8 @@ const Calendar = () => {
     if (todayDate !== "") {
         return (
             <Wrapper>
-                <Date>Date d'aujourd'hui : <span>{todayDate}</span>.</Date>
-                <JusquA>Prévisions disponibles jusqu'au {allDatesAvailable[13]}.</JusquA>
+                <p>Date d'aujourd'hui : <span>{(todayDate.split(" "))[0]} le {(todayDate.split(" "))[1]}</span>.</p>
+                <p>Prévisions disponibles jusqu'au {(allDatesAvailable[13].split(" "))[0]} le {(allDatesAvailable[13].split(" "))[1]}.</p>
             </Wrapper>
         )
     } else {
@@ -22,15 +22,12 @@ const Calendar = () => {
 
 const Wrapper = styled.div`
     margin: 15px;
-`
-
-const Date = styled.div`
-    text-align: center;
-    span {
-        font-weight: bold;
+    p {
+        text-align: center;
+        span {
+            font-weight: bold;
+        }
     }
 `
-
-const JusquA = styled.div``
 
 export default Calendar;
