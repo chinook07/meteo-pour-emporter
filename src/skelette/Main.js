@@ -14,6 +14,8 @@ const Main = () => {
     )
 }
 
-const Wrapper = styled.main``
+const Wrapper = styled.main`
+    min-height: calc(100vh - 265px);
+`
 
 export default Main;

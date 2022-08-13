@@ -19,7 +19,7 @@ const Summary = () => {
         localStorage.setItem("entireForecast", JSON.stringify(wholeForecast));
     }
 
-    if (allWeather && allWeather !== []) {
+    if (allWeather && allWeather.length > 0) {
         return (
             <Wrapper>
                 <div>Prévisions sommaires :</div>

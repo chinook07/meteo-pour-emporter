@@ -21,7 +21,7 @@ const WeatherContextProvider = ({ children }) => {
         const timeNow = today.getHours();
         const todayFormatted = format(startOfToday(today), "EEEE dd", { locale: frCA });
         
-        if (time === timeNow && todayDate === todayFormatted) {
+        if ((time === timeNow || time === timeNow - 1) && todayDate === todayFormatted) {
             setReady(true);
         } else {
             setAllWeather([]);

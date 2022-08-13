@@ -29,13 +29,17 @@ const Wrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    margin-top: 15px;
 `
 
 const DateChoice = styled.div`
     background-color: var(--c-lemon);
+    border-radius: 5px;
     cursor: pointer;
     margin: 10px;
     padding: 10px;
+    min-width: calc(100% / 7 - 40px);
+    text-align: center;
 `
 
 export default DateChoices;
