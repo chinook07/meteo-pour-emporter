@@ -6,23 +6,36 @@ export const WeatherContext = createContext();
 
 const WeatherContextProvider = ({ children }) => {
 
-    const [todayDate, setTodayDate] = useState("");
-    const [allDatesAvailable, setAllDatesAvailable] = useState();
-    const [allWeather, setAllWeather] = useState([]);
+    const [todayDate, setTodayDate] = useState(JSON.parse(localStorage.getItem("date")));
+    const [time, setTime] = useState(JSON.parse(localStorage.getItem("time")));
+    const [allDatesAvailable, setAllDatesAvailable] = useState(JSON.parse(localStorage.getItem("allDatesAvailable")));
+    const [allWeather, setAllWeather] = useState(JSON.parse(localStorage.getItem("entireForecast")));
+    const [ready, setReady] = useState(false);
+
+    // Trouver la date d'aujourd'hui, l'heure, et les 14 jours à venir.
 
     useEffect(() => {
-        const today = (new Date());
-        setTodayDate(format(startOfToday(today), "EEEE dd", { locale: frCA }));
-        // 
-    }, [])
 
-    useEffect(() => {
-        let allDatesTemp = [];
-        for (let i = 0; i < 14; i++) {
-            allDatesTemp[i] = (format(addDays(startOfToday(new Date()), i), "EEEE dd", {locale: frCA}))
+        const today = new Date();
+        const timeNow = today.getHours();
+        const todayFormatted = format(startOfToday(today), "EEEE dd", { locale: frCA });
+        
+        if (time === timeNow && todayDate === todayFormatted) {
+            setReady(true);
+        } else {
+            setAllWeather([]);
+            localStorage.clear();
+            localStorage.setItem("time", JSON.stringify(timeNow));
+            localStorage.setItem("date", JSON.stringify(todayFormatted));
+            let allDatesTemp = [];
+            for (let i = 0; i < 14; i++) {
+                allDatesTemp.push(format(addDays(startOfToday(today), i), "EEEE dd", {locale: frCA}))
+            }
+            localStorage.setItem("allDatesAvailable", JSON.stringify(allDatesTemp));
+            setReady(true)
         }
-        setAllDatesAvailable(allDatesTemp);
-    }, [todayDate])
+        
+    }, [])
 
     return (
         <WeatherContext.Provider
@@ -30,7 +43,8 @@ const WeatherContextProvider = ({ children }) => {
                 todayDate,
                 allDatesAvailable,
                 allWeather,
-                setAllWeather
+                setAllWeather,
+                ready
             }}
         >
             {children}
