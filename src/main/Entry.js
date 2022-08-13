@@ -8,6 +8,8 @@ import DestinationForm from "../bitsEntry/DestinationForm";
 import Choices from "../bitsEntry/Choices";
 import DateChoices from "../bitsEntry/DateChoices";
 
+const { REACT_APP_CLE_METEO, REACT_APP_CLE_VILLE } = process.env;
+
 const Entry = () => {
     const { allWeather, setAllWeather } = useContext(WeatherContext);
 
@@ -25,7 +27,7 @@ const Entry = () => {
     const searchCity = (e) => {
         if (cityEntered !== "") {
             e.preventDefault();
-            fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityEntered}&limit=5&appid=c77a7a4b3db833e991269e38c96f8d5d&units=metric&lang=fr`)
+            fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityEntered}&limit=5&appid=${REACT_APP_CLE_VILLE}&units=metric&lang=fr`)
                 .then(res => res.json())
                 .then(data => {
                     setCitiesFound(data)
@@ -44,7 +46,7 @@ const Entry = () => {
     }
 
     const selectDate = (date, dateIndex) => {
-        fetch(`https://api.weatherbit.io/v2.0/forecast/daily?lat=${cityChosen.lat}&lon=${cityChosen.lon}&key=efcab29fd72a499ebc37f605f0cdb1af&lang=fr`)
+        fetch(`https://api.weatherbit.io/v2.0/forecast/daily?lat=${cityChosen.lat}&lon=${cityChosen.lon}&key=${REACT_APP_CLE_METEO}&lang=fr`)
             .then(res => res.json())
             .then(data => {
                 const differenceInDay = compareAsc(parseISO(data.data[0].valid_date), parseISO(format(new Date(), "yyyy-MM-dd", { locale: frCA })));
