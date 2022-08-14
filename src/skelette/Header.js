@@ -14,7 +14,7 @@ const Header = () => {
             </Line1>
 
             <Logo>
-                <div>Vos prévisions personnalisées pour votre voyage</div>
+                <div>Des prévisions personnalisées pour votre voyage</div>
                 <IconGalore>
                     <TiWeatherCloudy />
                     <IconArrowWaveRightUp />

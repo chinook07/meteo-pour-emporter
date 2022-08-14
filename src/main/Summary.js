@@ -19,6 +19,11 @@ const Summary = () => {
         localStorage.setItem("entireForecast", JSON.stringify(wholeForecast));
     }
 
+    const reset = () => {
+        setAllWeather([]);
+        localStorage.removeItem("entireForecast")
+    }
+
     if (allWeather && allWeather.length > 0) {
         return (
             <Wrapper>
@@ -41,7 +46,7 @@ const Summary = () => {
                         })
                     }
                 </AllWeather>
-                
+                <button onClick={reset}>Effacer</button>
             </Wrapper>
         )
     }
@@ -50,15 +55,34 @@ const Summary = () => {
 
 const Wrapper = styled.div`
     margin: 15px;
+    > div:first-child {
+        text-align: center;
+    }
+    > button {
+        background-color: var(--c-yellow);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: block;
+        margin: 0 auto;
+        padding: 10px;
+        &:hover {
+            background-color: var(--c-lemon);
+        }
+        &:active {
+            transform: scale(1.1);
+        }
+    }
 `
 
 const AllWeather = styled.div`
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 `
 
 const OneWeather = styled.div`
-    margin: 25px 25px 25px 0;
+    margin: 25px;
 `
 
 export default Summary;
