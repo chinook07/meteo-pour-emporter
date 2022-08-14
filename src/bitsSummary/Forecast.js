@@ -3,34 +3,27 @@ import styled from "styled-components";
 const Forecast = ({ element }) => {
     return (
         <Wrapper>
-            <div>Température / ressenti °C</div>
+            <div>Température °C</div>
             <Temp>
-                <TempMin>
-                    <div>
-                        <TempNum>{element.weather.min_temp}</TempNum>
-                        <TempDesc>MIN</TempDesc>
-                    </div>
-                    <div>{element.weather.app_min_temp}</div>
-                </TempMin>
-                <TempMax>
-                    <div>
-                        <TempNum>{element.weather.max_temp}</TempNum>
-                        <TempDesc>MAX</TempDesc>
-                    </div>
-                    
-                    <div>{element.weather.app_max_temp}</div>
-                </TempMax>
+                <TempReel>
+                    <MinR>{element.weather.min_temp}</MinR>
+                    <MaxR>{element.weather.max_temp}</MaxR>
+                </TempReel>
+                <TempRess>
+                    <MinS>{element.weather.app_min_temp}</MinS>
+                    <TexteRess>Ressenti</TexteRess>
+                    <MaxS>{element.weather.app_max_temp}</MaxS>
+                </TempRess>
             </Temp>
-            
-            <div>{element.weather.weather.description}</div>
             <img
                 src={`https://www.weatherbit.io/static/img/icons/${element.weather.weather.icon}.png`}
                 alt={element.weather.weather.description}
             ></img>
+            <div>{element.weather.weather.description}</div>
             <div>Précip. : {element.weather.pop} %</div>
             {
                 element.weather.precip === 0
-                    ? <div>Aucune précipitation</div>
+                    ? <div>–––––––––––––</div>
                     : element.weather.precip >= 1
                         ? <div>{parseInt(element.weather.precip)} mm de précip.</div>
                         : <div>{`<`} 1 mm de précip.</div>
@@ -46,12 +39,58 @@ const Forecast = ({ element }) => {
 
 const Wrapper = styled.div`
     margin-top: 10px;
+    text-align: center;
 `
 
 const Temp = styled.div`
+    border-radius: 5px;
     color: var(--c-light);
     display: flex;
+    flex-direction: column;
     margin: 5px 0;
+    width: 100%;
+    > div > div {
+        padding: 10px;
+    }
+`
+
+const TempReel = styled.div`
+    display: flex;
+    font-size: large;
+`
+
+const MinR = styled.div`
+    background-color: blue;
+    border-radius: 5px 0 0;
+    width: 50%;
+`
+
+const MaxR = styled.div`
+    background-color: red;
+    border-radius: 0 5px 0 0;
+    width: 50%;
+`
+
+const TempRess = styled.div`
+    display: flex;
+    opacity: 0.7;
+`
+
+const MinS = styled.div`
+    background-color: blue;
+    border-radius: 0 0 0 5px;
+    width: 25%;
+`
+
+const TexteRess = styled.div`
+    background-color: var(--c-dark);
+    width: 50%;
+`
+
+const MaxS = styled.div`
+    background-color: red;
+    border-radius: 0 0 5px;
+    width: 25%;
 `
 
 const TempMin = styled.div`

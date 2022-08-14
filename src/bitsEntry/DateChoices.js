@@ -26,6 +26,7 @@ const DateChoices = ({ selectDate }) => {
 
 const Wrapper = styled.div`
     background-color: var(--c-green);
+    border-radius: 5px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -40,6 +41,12 @@ const DateChoice = styled.div`
     padding: 10px;
     min-width: calc(100% / 7 - 40px);
     text-align: center;
+    &:hover {
+        background-color: var(--c-light);
+    }
+    &:active {
+        background-color: var(--c-yellow);
+    }
 `
 
 export default DateChoices;

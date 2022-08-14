@@ -14,8 +14,8 @@ const About = () => {
             <button onClick={fermerBoite}>
                 <RiCloseCircleLine size={30} title="Fermer" />
             </button>
-            <p>Météo pour emporter est un mini-projet pour étendre mes connaissances en développement web, tout en répondant à un besoin existant. Cette application vous permet de rechercher les prévisions météo pour plusieurs villes le long de votre itinéraire. C'est parfait pour une croisière, un <span>road trip</span>, un périple de cyclotourisme, ou tout autre voyage multi-villes. Puisque les prévisions changent rapidement, les données ne seront conservées en stockage local dans votre navigateur que pendant environ une heure.</p>
-            <p>Les prévisions sont faites à l'aide de l'<span>API</span> <ExternalLink href="https://www.weatherbit.io/">Weatherbit</ExternalLink>, et sont mises à jour fréquemment. Si vous remarquez des problèmes avec ce site web, n'hésitez pas à me contacter <ExternalLink href="https://github.com/chinook07/meteo-pour-emporter">via GitHub</ExternalLink>.</p>
+            <p>Météo pour emporter est un miniprojet pour étendre mes connaissances en développement web, tout en répondant à un besoin existant. Cette application vous permet de rechercher les prévisions météo pour plusieurs villes le long de votre itinéraire. C'est parfait pour une croisière, un <span>road trip</span>, un périple de cyclotourisme, ou tout autre voyage multivilles. Puisque les pronostics changent rapidement, les données ne seront conservées en stockage local dans votre navigateur que pendant environ une heure.</p>
+            <p>Les prévisions sont réalisées à l'aide de l'<span>API</span> <ExternalLink href="https://www.weatherbit.io/">Weatherbit</ExternalLink>, et sont mises à jour fréquemment. Si vous remarquez des problèmes avec ce site web, n'hésitez pas à me contacter <ExternalLink href="https://github.com/chinook07/meteo-pour-emporter">via GitHub</ExternalLink>.</p>
         </Wrapper>
     )
 }
@@ -27,10 +27,16 @@ const Wrapper = styled.aside`
     button {
         background-color: inherit;
         border: none;
-        display: block;
+        cursor: pointer;
+        display: flex;
         margin: 0 0 0 auto;
+        &:hover {
+            background-color: var(--c-dark);
+            color: var(--c-yellow);
+        }
     }
     p {
+        margin-top: 5px;
         span {
             font-style: italic;
         }

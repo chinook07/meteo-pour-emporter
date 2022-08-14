@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-const Choices = ({citiesFound, selectCity}) => {
+const Choices = ({ citiesFound, selectCity }) => {
+    citiesFound.forEach(element => {
+        if (element.local_names) {
+            element.name = element.local_names.fr
+        }
+    });
 
     return (
         <Wrapper>
@@ -28,6 +33,10 @@ const Choices = ({citiesFound, selectCity}) => {
                     })
                 }
             </AllChoices>
+            {
+                citiesFound.length === 5 &&
+                <Suggestion>Astuce : Vous cherchez une ville canadienne avec ce nom? Ajoutez <span>« , CA »</span> à la fin. Exemple : <span>St-Sauveur, CA</span>.</Suggestion>
+            }
         </Wrapper>
         
     )
@@ -57,6 +66,13 @@ const Choice = styled.div`
     }
     &:nth-child(even) {
         background-color: var(--c-light);
+    }
+`
+
+const Suggestion = styled.p`
+    margin-top: 10px;
+    span {
+        font-weight: bold;
     }
 `
 
