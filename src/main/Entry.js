@@ -29,7 +29,7 @@ const Entry = () => {
         if (cityEntered !== "") {
             e.preventDefault();
             setShowCal(false);
-            fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityEntered}&limit=5&appid=${REACT_APP_CLE_VILLE}&units=metric&lang=fr`)
+            fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityEntered}&limit=5&appid=${REACT_APP_CLE_VILLE}&units=metric&lang=fr`)
                 .then(res => res.json())
                 .then(data => {
                     setCitiesFound(data)
