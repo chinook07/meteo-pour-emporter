@@ -1,6 +1,7 @@
 {
     "name": "meteo-pour-emporter",
     "version": "0.1.0",
+    "homepage": "https://chinook07.github.io/meteo-pour-emporter",
     "private": true,
     "dependencies": {
         "@tabler/icons": "^1.78.1",
@@ -21,7 +22,9 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
     },
     "eslintConfig": {
         "extends": [
@@ -42,6 +45,7 @@
         ]
     },
     "devDependencies": {
-        "dotenv-webpack": "^8.0.0"
+        "dotenv-webpack": "^8.0.0",
+        "gh-pages": "^4.0.0"
     }
 }
